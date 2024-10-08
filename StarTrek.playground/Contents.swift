@@ -38,24 +38,28 @@ var femaleOfficers: [String] = ["kira", "dax", "tpol", "janeway", "troi", "seven
 First, a set of warm-up problems for everyone
 */
 // Q0: How many human officers are there?
-
+var humanCount = humanOfficers.count
+humanCount
 
 
 
 // Q1: What percentage of humans are female?
-
+var femaleHumanCount = humanOfficers.filter { femaleOfficers.contains($0) }.count
+Float(femaleHumanCount)/Float(humanCount) * 100
 
 
 
 // Q2: How many first officers are human?
-
+var firstOfficersHuman = firstOfficers.keys.filter{
+  humanOfficers.contains($0)
+}
+firstOfficersHuman.count
 
 
 
 // Q3: Get a list of females sorted by name
-
-
-
+var femalesSorted = femaleOfficers.sorted()
+femalesSorted
 
 /*:
  Given the following struct and some methods to make these objects comparable, answer the questions in the sets below
@@ -86,15 +90,13 @@ struct Officer: Comparable {
 Group 1
 */
 // Q4: Create an array of officer objects who captain starships
-
-
+var officerObjects = captains.map { Officer(name: $0, ship: $1) }
+officerObjects.map{$0.name}
 
 
 // Q5: Alphabetize the previous list by the captain's name
-
-
-
-
+var sortedCaptains = officerObjects.sorted(by: <)
+sortedCaptains.map{$0.name}
 /*:
 Group 2
 */
